@@ -1,0 +1,274 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BDAlquilerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TB_Alquiler">
+          <Key>
+            <PropertyRef Name="cod_auto" />
+            <PropertyRef Name="cod_cli" />
+          </Key>
+          <Property Name="cod_auto" Type="int" Nullable="false" />
+          <Property Name="cod_cli" Type="int" Nullable="false" />
+          <Property Name="fec_ini_asig" Type="date" />
+          <Property Name="fec_fin_asig" Type="date" />
+        </EntityType>
+        <EntityType Name="TB_Automovil">
+          <Key>
+            <PropertyRef Name="cod_auto" />
+          </Key>
+          <Property Name="cod_auto" Type="int" Nullable="false" />
+          <Property Name="modelo_auto" Type="varchar" MaxLength="20" />
+          <Property Name="color_auto" Type="varchar" MaxLength="20" />
+          <Property Name="precio_auto" Type="decimal" Precision="7" Scale="2" />
+          <Property Name="cod_marca" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TB_Cliente">
+          <Key>
+            <PropertyRef Name="cod_cli" />
+          </Key>
+          <Property Name="cod_cli" Type="int" Nullable="false" />
+          <Property Name="nom_cli" Type="varchar" MaxLength="30" />
+          <Property Name="ape_pat_cli" Type="varchar" MaxLength="30" />
+          <Property Name="ape_mat_cli" Type="varchar" MaxLength="30" />
+          <Property Name="tipo_cli" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="TB_Marca">
+          <Key>
+            <PropertyRef Name="cod_marca" />
+          </Key>
+          <Property Name="cod_marca" Type="int" Nullable="false" />
+          <Property Name="nom_marca" Type="varchar" MaxLength="20" />
+          <Property Name="fec_ing" Type="date" />
+          <Property Name="pais_proc" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <Association Name="FK__TB_Alquil__cod_a__3E52440B">
+          <End Role="TB_Automovil" Type="Self.TB_Automovil" Multiplicity="1" />
+          <End Role="TB_Alquiler" Type="Self.TB_Alquiler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Automovil">
+              <PropertyRef Name="cod_auto" />
+            </Principal>
+            <Dependent Role="TB_Alquiler">
+              <PropertyRef Name="cod_auto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_Alquil__cod_c__3F466844">
+          <End Role="TB_Cliente" Type="Self.TB_Cliente" Multiplicity="1" />
+          <End Role="TB_Alquiler" Type="Self.TB_Alquiler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Cliente">
+              <PropertyRef Name="cod_cli" />
+            </Principal>
+            <Dependent Role="TB_Alquiler">
+              <PropertyRef Name="cod_cli" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_Automo__cod_m__398D8EEE">
+          <End Role="TB_Marca" Type="Self.TB_Marca" Multiplicity="1" />
+          <End Role="TB_Automovil" Type="Self.TB_Automovil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Marca">
+              <PropertyRef Name="cod_marca" />
+            </Principal>
+            <Dependent Role="TB_Automovil">
+              <PropertyRef Name="cod_marca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BDAlquilerModelStoreContainer">
+          <EntitySet Name="TB_Alquiler" EntityType="Self.TB_Alquiler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_Automovil" EntityType="Self.TB_Automovil" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_Cliente" EntityType="Self.TB_Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_Marca" EntityType="Self.TB_Marca" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__TB_Alquil__cod_a__3E52440B" Association="Self.FK__TB_Alquil__cod_a__3E52440B">
+            <End Role="TB_Automovil" EntitySet="TB_Automovil" />
+            <End Role="TB_Alquiler" EntitySet="TB_Alquiler" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_Alquil__cod_c__3F466844" Association="Self.FK__TB_Alquil__cod_c__3F466844">
+            <End Role="TB_Cliente" EntitySet="TB_Cliente" />
+            <End Role="TB_Alquiler" EntitySet="TB_Alquiler" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_Automo__cod_m__398D8EEE" Association="Self.FK__TB_Automo__cod_m__398D8EEE">
+            <End Role="TB_Marca" EntitySet="TB_Marca" />
+            <End Role="TB_Automovil" EntitySet="TB_Automovil" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BDAlquilerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TB_Alquiler">
+          <Key>
+            <PropertyRef Name="cod_auto" />
+            <PropertyRef Name="cod_cli" />
+          </Key>
+          <Property Name="cod_auto" Type="Int32" Nullable="false" />
+          <Property Name="cod_cli" Type="Int32" Nullable="false" />
+          <Property Name="fec_ini_asig" Type="DateTime" Precision="0" />
+          <Property Name="fec_fin_asig" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="TB_Automovil" Relationship="Self.FK__TB_Alquil__cod_a__3E52440B" FromRole="TB_Alquiler" ToRole="TB_Automovil" />
+          <NavigationProperty Name="TB_Cliente" Relationship="Self.FK__TB_Alquil__cod_c__3F466844" FromRole="TB_Alquiler" ToRole="TB_Cliente" />
+        </EntityType>
+        <EntityType Name="TB_Automovil">
+          <Key>
+            <PropertyRef Name="cod_auto" />
+          </Key>
+          <Property Name="cod_auto" Type="Int32" Nullable="false" />
+          <Property Name="modelo_auto" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="color_auto" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="precio_auto" Type="Decimal" Precision="7" Scale="2" />
+          <NavigationProperty Name="TB_Alquiler" Relationship="Self.FK__TB_Alquil__cod_a__3E52440B" FromRole="TB_Automovil" ToRole="TB_Alquiler" />
+          <NavigationProperty Name="TB_Marca" Relationship="Self.FK__TB_Automo__cod_m__398D8EEE" FromRole="TB_Automovil" ToRole="TB_Marca" />
+        </EntityType>
+        <EntityType Name="TB_Cliente">
+          <Key>
+            <PropertyRef Name="cod_cli" />
+          </Key>
+          <Property Name="cod_cli" Type="Int32" Nullable="false" />
+          <Property Name="nom_cli" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ape_pat_cli" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ape_mat_cli" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="tipo_cli" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TB_Alquiler" Relationship="Self.FK__TB_Alquil__cod_c__3F466844" FromRole="TB_Cliente" ToRole="TB_Alquiler" />
+        </EntityType>
+        <EntityType Name="TB_Marca">
+          <Key>
+            <PropertyRef Name="cod_marca" />
+          </Key>
+          <Property Name="cod_marca" Type="Int32" Nullable="false" />
+          <Property Name="nom_marca" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="fec_ing" Type="DateTime" Precision="0" />
+          <Property Name="pais_proc" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TB_Automovil" Relationship="Self.FK__TB_Automo__cod_m__398D8EEE" FromRole="TB_Marca" ToRole="TB_Automovil" />
+        </EntityType>
+        <Association Name="FK__TB_Alquil__cod_a__3E52440B">
+          <End Role="TB_Automovil" Type="Self.TB_Automovil" Multiplicity="1" />
+          <End Role="TB_Alquiler" Type="Self.TB_Alquiler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Automovil">
+              <PropertyRef Name="cod_auto" />
+            </Principal>
+            <Dependent Role="TB_Alquiler">
+              <PropertyRef Name="cod_auto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_Alquil__cod_c__3F466844">
+          <End Role="TB_Cliente" Type="Self.TB_Cliente" Multiplicity="1" />
+          <End Role="TB_Alquiler" Type="Self.TB_Alquiler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Cliente">
+              <PropertyRef Name="cod_cli" />
+            </Principal>
+            <Dependent Role="TB_Alquiler">
+              <PropertyRef Name="cod_cli" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_Automo__cod_m__398D8EEE">
+          <End Role="TB_Marca" Type="Self.TB_Marca" Multiplicity="1" />
+          <End Role="TB_Automovil" Type="Self.TB_Automovil" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="BDAlquilerEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TB_Alquiler" EntityType="Self.TB_Alquiler" />
+          <EntitySet Name="TB_Automovil" EntityType="Self.TB_Automovil" />
+          <EntitySet Name="TB_Cliente" EntityType="Self.TB_Cliente" />
+          <EntitySet Name="TB_Marca" EntityType="Self.TB_Marca" />
+          <AssociationSet Name="FK__TB_Alquil__cod_a__3E52440B" Association="Self.FK__TB_Alquil__cod_a__3E52440B">
+            <End Role="TB_Automovil" EntitySet="TB_Automovil" />
+            <End Role="TB_Alquiler" EntitySet="TB_Alquiler" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_Alquil__cod_c__3F466844" Association="Self.FK__TB_Alquil__cod_c__3F466844">
+            <End Role="TB_Cliente" EntitySet="TB_Cliente" />
+            <End Role="TB_Alquiler" EntitySet="TB_Alquiler" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_Automo__cod_m__398D8EEE" Association="Self.FK__TB_Automo__cod_m__398D8EEE">
+            <End Role="TB_Marca" EntitySet="TB_Marca" />
+            <End Role="TB_Automovil" EntitySet="TB_Automovil" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BDAlquilerModelStoreContainer" CdmEntityContainer="BDAlquilerEntities">
+          <EntitySetMapping Name="TB_Alquiler">
+            <EntityTypeMapping TypeName="BDAlquilerModel.TB_Alquiler">
+              <MappingFragment StoreEntitySet="TB_Alquiler">
+                <ScalarProperty Name="cod_auto" ColumnName="cod_auto" />
+                <ScalarProperty Name="cod_cli" ColumnName="cod_cli" />
+                <ScalarProperty Name="fec_ini_asig" ColumnName="fec_ini_asig" />
+                <ScalarProperty Name="fec_fin_asig" ColumnName="fec_fin_asig" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_Automovil">
+            <EntityTypeMapping TypeName="BDAlquilerModel.TB_Automovil">
+              <MappingFragment StoreEntitySet="TB_Automovil">
+                <ScalarProperty Name="cod_auto" ColumnName="cod_auto" />
+                <ScalarProperty Name="modelo_auto" ColumnName="modelo_auto" />
+                <ScalarProperty Name="color_auto" ColumnName="color_auto" />
+                <ScalarProperty Name="precio_auto" ColumnName="precio_auto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_Cliente">
+            <EntityTypeMapping TypeName="BDAlquilerModel.TB_Cliente">
+              <MappingFragment StoreEntitySet="TB_Cliente">
+                <ScalarProperty Name="cod_cli" ColumnName="cod_cli" />
+                <ScalarProperty Name="nom_cli" ColumnName="nom_cli" />
+                <ScalarProperty Name="ape_pat_cli" ColumnName="ape_pat_cli" />
+                <ScalarProperty Name="ape_mat_cli" ColumnName="ape_mat_cli" />
+                <ScalarProperty Name="tipo_cli" ColumnName="tipo_cli" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_Marca">
+            <EntityTypeMapping TypeName="BDAlquilerModel.TB_Marca">
+              <MappingFragment StoreEntitySet="TB_Marca">
+                <ScalarProperty Name="cod_marca" ColumnName="cod_marca" />
+                <ScalarProperty Name="nom_marca" ColumnName="nom_marca" />
+                <ScalarProperty Name="fec_ing" ColumnName="fec_ing" />
+                <ScalarProperty Name="pais_proc" ColumnName="pais_proc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK__TB_Automo__cod_m__398D8EEE" TypeName="BDAlquilerModel.FK__TB_Automo__cod_m__398D8EEE" StoreEntitySet="TB_Automovil">
+            <EndProperty Name="TB_Marca">
+              <ScalarProperty Name="cod_marca" ColumnName="cod_marca" />
+            </EndProperty>
+            <EndProperty Name="TB_Automovil">
+              <ScalarProperty Name="cod_auto" ColumnName="cod_auto" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
