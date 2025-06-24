@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36212.18 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Datos", "Datos\Datos.csproj", "{BDE41A11-6C28-48AF-B23E-7134909BE5FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Negocio", "Negocio\Negocio.csproj", "{F024AFD4-D5AA-486E-8C94-2B2FC47FC49E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentación", "Presentación\Presentación.csproj", "{2BCC68C3-EE09-4CA6-B1FF-0FBE09399977}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BDE41A11-6C28-48AF-B23E-7134909BE5FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDE41A11-6C28-48AF-B23E-7134909BE5FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDE41A11-6C28-48AF-B23E-7134909BE5FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDE41A11-6C28-48AF-B23E-7134909BE5FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F024AFD4-D5AA-486E-8C94-2B2FC47FC49E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F024AFD4-D5AA-486E-8C94-2B2FC47FC49E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F024AFD4-D5AA-486E-8C94-2B2FC47FC49E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F024AFD4-D5AA-486E-8C94-2B2FC47FC49E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BCC68C3-EE09-4CA6-B1FF-0FBE09399977}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BCC68C3-EE09-4CA6-B1FF-0FBE09399977}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BCC68C3-EE09-4CA6-B1FF-0FBE09399977}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BCC68C3-EE09-4CA6-B1FF-0FBE09399977}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {94630B9A-F2BA-4303-BF0A-B90481D83C6A}
+	EndGlobalSection
+EndGlobal
